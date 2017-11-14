@@ -1,0 +1,6 @@
+var fs = require('fs')
+var watchify = require('watchify')
+watchify('./main.js')
+  .transform('babelify', {presets: ['es2015']})
+  .bundle()
+  .pipe(fs.createWriteStream('bundle.js'))

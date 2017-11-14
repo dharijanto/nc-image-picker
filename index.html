@@ -1,0 +1,75 @@
+<html>
+  <head>
+  	<title>Gallery Image Section</title>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  	<link rel="stylesheet" href="/assets/jquery-file-upload-v9.19.1/css/style.css">
+  	<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+  	<link rel="stylesheet" href="/assets/jquery-file-upload-v9.19.1/css/jquery.fileupload.css">
+  	<style>
+  		.overlay {
+  			position: absolute;
+  			top: 0;bottom: 0;left: 0;right: 0;
+  			height: 100%;
+  			width: 100%;
+  			opacity: 0;
+  			transition: .5s ease;
+  			background-color: #d7dfea;
+  		}
+  		.gallery_product:hover .overlay {
+  			opacity: 1;
+  		}
+      .textImage {
+        left: 0;position:absolute;text-align:center;top: 40%;width: 100%
+      }
+  	</style>
+  </head>
+  <body>
+  	<div class="container">
+          <button class="btn btn-primary" id="imagePicker">Upload Button</button>          
+  	</div>
+    <!--
+    <div id="modalUpload" class="modal fade" role="dialog" style="overflow-y:auto;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Upload Image</h4>
+          </div>
+          <div class="modal-body">
+            <div id="imagePicker"></div> 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    -->
+  </body>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/assets/jquery-file-upload-v9.19.1/js/vendor/jquery.ui.widget.js"></script>
+  <script type="text/javascript" src="/assets/jquery-file-upload-v9.19.1/js/jquery.iframe-transport.js"></script>
+  <script type="text/javascript" src="/assets/jquery-file-upload-v9.19.1/js/jquery.fileupload.js"></script>
+  <script type="text/javascript" src="./bundle.js"></script>
+  <script>
+  function imageSelected (param) {
+    alert('call back ' + param)
+  }
+
+  $('#imagePicker').NCImagePicker({
+    callbackFn: imageSelected,
+    postURL: 'http://cms.nusantara-local.com:8080/07d4d76b54b75f5b12c6458cbbd1f1aa/imageupload',
+    getURL: 'http://cms.nusantara-local.com:8080/07d4d76b54b75f5b12c6458cbbd1f1aa/imageupload',
+    deleteURL: 'http://cms.nusantara-local.com:8080/07d4d76b54b75f5b12c6458cbbd1f1aa/imagedelete',
+  })
+
+  // $(".modal").on("shown.bs.modal", function () {
+  //     if ($(".modal-backdrop").length > 1) {
+  //       $(".modal-backdrop").not(':first').remove();
+  //     }
+  // })
+
+  </script>
+</html>
