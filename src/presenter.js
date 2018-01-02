@@ -15,19 +15,20 @@ class PresenterController {
   _getImages (nextCursor = '') {
     return this._model.getImages(nextCursor).then(resp => {
       if (resp.status) {
-        this._nextCursor = resp.data.data.next_cursor
-        resp.data.data.resources.forEach((data) => {
+        this._nextCursor = resp.data.next_cursor
+        resp.data.resources.forEach((data) => {
           this._view.appendImage(data)
         })
-        if (resp.data.data.next_cursor) {
-          this._view.loadMoreButtonVisible(resp.data.data.next_cursor)
+        if (resp.data.next_cursor) {
+          this._view.loadMoreButtonVisible(resp.data.next_cursor)
         } else {
           this._view.loadMoreButtonVisible(false)
         }
       } else {
         alert('Whoops!! Image is not loaded properly.')
       }
-    }).catch(function (err) {
+    }).catch(err => {
+      console.error(err)
       alert('Image failed to load. Internal server error.')
     })
   }
@@ -35,11 +36,7 @@ class PresenterController {
   _deleteButtonClicked (publicId) {
     return new Promise((resolve, reject) => {
       this._model.deleteImage(publicId).then(resp => {
-        if (resp.status) {
-          resolve(resp)
-        } else {
-          reject(resp)
-        }
+        resolve(resp)
       }).catch(function (err) {
         reject(err)
       })
@@ -51,14 +48,17 @@ class PresenterController {
   }
 
   _uploadClicked (image) {
+    console.log(image)
     return new Promise((resolve, reject) => {
-      this._model.uploadImage(image).then(resp => {
-        if (resp.status) {
+      if (image !== undefined && typeof image !== null) {
+        this._model.uploadImage(image).then(resp => {
           resolve(resp)
-        } else {
-          reject(resp)
-        }
-      })
+        }).catch(err => {
+          reject(err)
+        })
+      } else {
+        resolve({status: false, data: {errMessage: 'Please select the upload picture'}})
+      }
     })
   }
 }

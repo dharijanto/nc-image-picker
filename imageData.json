@@ -82,19 +82,6 @@
                 "secure_url": "https://res.cloudinary.com/nusantara-cloud/image/upload/v1507796909/daniaja/AMD-Radeon-RX-Vega-64-Reference.jpg"
             },
             {
-                "public_id": "daniaja/amd-ryzen-am4-motherboard_3",
-                "format": "jpg",
-                "version": 1507798302,
-                "resource_type": "image",
-                "type": "upload",
-                "created_at": "2017-10-12T08:51:42Z",
-                "bytes": 211767,
-                "width": 750,
-                "height": 506,
-                "url": "http://res.cloudinary.com/nusantara-cloud/image/upload/v1507798302/daniaja/amd-ryzen-am4-motherboard_3.jpg",
-                "secure_url": "https://res.cloudinary.com/nusantara-cloud/image/upload/v1507798302/daniaja/amd-ryzen-am4-motherboard_3.jpg"
-            },
-            {
                 "public_id": "daniaja/amd-ryzen-pricing-100713729-orig",
                 "format": "jpg",
                 "version": 1507798303,

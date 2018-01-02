@@ -30,7 +30,6 @@ class View {
     this._imgThumbnail = ''
     $(this._modalDelete).find('button.btn-delete').on('click', (e) => {
       this._onDeleteClicked(this._publicId).then(resp => {
-        console.log(resp)
         if (resp.status) {
           this._imgThumbnail.remove()
           this._modalDeleteCompleted.modal('show')
@@ -39,7 +38,8 @@ class View {
           this._modalDelete.modal('hide')
           this._modalDeleteFailed.modal('show')
         }
-      }).catch(function (err) {
+      }).catch(err => {
+        console.error(err)
         self._modalDelete.modal('hide')
         self._modalDeleteFailed.modal('show')
       })
