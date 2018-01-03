@@ -34,21 +34,23 @@ class Model {
   }
 
   uploadImage (image) {
-    axiosFileupload(this._postURL, image).then(resp => {
-      if (resp.data.status) {
-        resolve({status: true,
-          data: {
-            url: resp.data.data.url,
-            public_id: resp.data.data.public_id,
-            original_name: resp.data.data.originalName,
-            created_at: resp.data.data.created_at
-          }}
-        )
-      } else {
-        resolve({status: false, errMessage: resp.data.errMessage})
-      }
-    }).catch(err => {
-      reject(err)
+    return new Promise((resolve, reject) => {
+      axiosFileupload(this._postURL, image).then(resp => {
+        if (resp.data.status) {
+          resolve({status: true,
+            data: {
+              url: resp.data.data.url,
+              public_id: resp.data.data.public_id,
+              original_name: resp.data.data.originalName,
+              created_at: resp.data.data.created_at
+            }}
+          )
+        } else {
+          resolve({status: false, errMessage: resp.data.errMessage})
+        }
+      }).catch(err => {
+        reject(err)
+      })
     })
   }
 }

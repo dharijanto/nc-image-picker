@@ -1,10 +1,13 @@
 var $ = require('jquery')
+var Presenter = require('./src/presenter.js')
+var DefaultModel = require('./src/model.js')
+var MockModel = require('./src/mock-model.js')
+var DefaultView = require('./src/view.js')
 
-$.fn.NCImagePicker = function ({callbackFn, postURL, getURL, deleteURL}) {
+$.fn.NCImagePicker = function ({callbackFn, postURL, getURL, deleteURL, useMockModel = false, customView}) {
   const divImage = this
-  const Model = require('../mod-nc-image-picker/src/model.js')
-  const View = require('../mod-nc-image-picker/src/view.js')
-  const Presenter = require('./src/presenter.js')
+  var Model = useMockModel ? MockModel : DefaultModel
+  const View = customView || DefaultView
 
   var model = new Model(postURL, getURL, deleteURL)
   var view = new View(divImage)
