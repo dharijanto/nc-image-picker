@@ -14,7 +14,6 @@ class PresenterController {
 
   _getImages (nextCursor = '') {
     return this._model.getImages(nextCursor).then(resp => {
-      console.log('resp=' + JSON.stringify(resp))
       if (resp.status) {
         this._nextCursor = resp.data.next_cursor
         resp.data.resources.forEach((data) => {

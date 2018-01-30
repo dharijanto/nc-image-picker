@@ -7,7 +7,6 @@ var imageData = require('./imageData.json')
 
 class Model {
   constructor (postURL, getURL, deleteURL) {
-    console.log('Construcot MockModel')
     this._postURL = postURL
     this._getURL = getURL
     this._deleteURL = deleteURL
