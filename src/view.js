@@ -97,10 +97,10 @@ class View {
     var textImage = $('<div class="text-center textImage" style=""></div>')
     var overlayImage = $('<div class="overlay" > </div>')
     var imageSrc = $('<img src="' + imageURL + '" class="img-responsive" style="max-height:100%">')
-    var btnDeleteImage = $('<div class="btn btn-danger btn-close" style="float:right" data-toggle="modal" data-target="#___deletepicture" data-public-id="' + imagePublicId + '"> <span>X</span> </div>')
-    var urlImages = $('<a href="javascript:void(0);" class="data-image-url" data-url="' + imagePublicId + '">Click to trigger Callback !!</a>')
+    var btnDeleteImage = $(`<div class="btn btn-danger btn-close" style="float:right" data-toggle="modal" data-target="#___deletepicture" data-public-id="'${imagePublicId}'"> <span>X</span> </div>`)
+    var imageHref = $(`<a href="javascript:void(0);" class="data-image-url" data-url="${imageURL}" data-public-id="${imagePublicId}">Select Image</a>`)
 
-    textImage.append(urlImages)
+    textImage.append(imageHref)
     overlayImage.append(btnDeleteImage)
     overlayImage.append(textImage)
     imageData.append(imageSrc)
@@ -112,9 +112,10 @@ class View {
       this._imageInitialization.prepend(imageData)
     }
 
-    $(urlImages).on('click', (e) => {
-      var getURL = urlImages.data('url')
-      this._callbackFn(getURL)
+    $(imageHref).on('click', (e) => {
+      var imageURL = imageHref.data('url')
+      var imagePublicId = imageHref.data('public-id')
+      this._callbackFn(imageURL, imagePublicId)
     })
 
     $(btnDeleteImage).on('click', (e) => {
