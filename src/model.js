@@ -13,7 +13,7 @@ class Model {
     return new Promise((resolve, reject) => {
       axios.get(this._getURL + '?nextCursor=' + nextCursor)
       .then(function (response) {
-        resolve(response)
+        resolve(response.data)
       })
       .catch(function (err) {
         reject(err)
@@ -23,7 +23,7 @@ class Model {
 
   deleteImage (publicId) {
     return new Promise((resolve, reject) => {
-      axios.get(this._deleteURL + '?publicId=' + publicId)
+      axios.post(this._deleteURL + '?publicId=' + publicId)
       .then(response => {
         resolve(response)
       })
