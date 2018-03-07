@@ -25,7 +25,7 @@ class Model {
     return new Promise((resolve, reject) => {
       axios.post(this._deleteURL + '?publicId=' + publicId)
       .then(response => {
-        resolve(response)
+        resolve(response.data)
       })
       .catch(function (err) {
         reject(err)
