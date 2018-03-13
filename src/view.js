@@ -26,7 +26,7 @@ class View {
     this._modalUploadSuccess = $('<div id="___fileuploadsuccess" class="modal fade" role="dialog"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button> <h4 class="modal-title">Modal Upload File Success</h4> </div><div class="modal-body"> <div class="info_result text-center hidden"> <p>Success upload your file ! Below is your link : </p> <!-- <img src="" class="img-responsive result_image" style="margin:0 auto;"> <input type="text" readonly value="" class="form-control result_image_text"> --> </div></div><div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div></div></div></div>')
     this._modalUploadFailed = $('<div id="___fileuploadfailed" class="modal fade" role="dialog"> <div class="modal-dialog"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button> <h4 class="modal-title">Modal Upload File Failed</h4> </div><div class="modal-body"> <div class="info_result text-center"> <p class="text_message_failed">Failed upload your file !</p></div></div><div class="modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div></div></div></div>')
 
-    this._publicId = ''
+    this._publicId = null
     this._imgThumbnail = ''
     $(this._modalDelete).find('button.btn-delete').on('click', (e) => {
       this._onDeleteClicked(this._publicId).then(resp => {
@@ -97,7 +97,7 @@ class View {
     var textImage = $('<div class="text-center textImage" style=""></div>')
     var overlayImage = $('<div class="overlay" > </div>')
     var imageSrc = $('<img src="' + imageURL + '" class="img-responsive" style="max-height:100%">')
-    var btnDeleteImage = $(`<div class="btn btn-danger btn-close" style="float:right" data-toggle="modal" data-target="#___deletepicture" data-public-id="'${imagePublicId}'"> <span>X</span> </div>`)
+    var btnDeleteImage = $(`<div class="btn btn-danger btn-close" style="float:right" data-toggle="modal" data-target="#___deletepicture" data-public-id="${imagePublicId}"> <span>X</span> </div>`)
     var imageHref = $(`<a href="javascript:void(0);" class="data-image-url" data-url="${imageURL}" data-public-id="${imagePublicId}">Select Image</a>`)
 
     textImage.append(imageHref)
