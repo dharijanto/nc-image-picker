@@ -1,5 +1,5 @@
 {
-  "name": "browserify-test",
+  "name": "nc-image-picker",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
@@ -16,7 +16,19 @@
     "build": "node run",
     "buildtoo": "browserify -d -g . > bundle.js"
   },
-  "author": "",
+  "author": {
+    "name": "Denny Harijanto",
+    "email": "denny@nusantara-cloud.com",
+    "url": "http://www.nusantara-cloud.com"
+  },
+  "homepage": "https://github.com/nusantara-cloud/nc-image-picker",
+  "repository": {
+    "bugs": {
+      "url": "https://github.com/nusantara-cloud/nc-image-picker"
+    },
+    "type": "git",
+    "url": "git://github.com/nusantara-cloud/nc-image-picker.git"
+  },
   "license": "ISC",
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
