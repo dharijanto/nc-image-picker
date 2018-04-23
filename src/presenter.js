@@ -25,11 +25,12 @@ class PresenterController {
           this._view.loadMoreButtonVisible(false)
         }
       } else {
-        alert('Whoops!! Image is not loaded properly.')
+        alert('Error loading image: ' + resp.errMessage)
+        console.error(resp.errMessage)
       }
     }).catch(err => {
       console.error(err)
-      alert('Image failed to load. Internal server error.')
+      alert('Error loading image: internal error')
     })
   }
 

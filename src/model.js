@@ -1,8 +1,23 @@
 var axios = require('axios')
+var FormData = require('form-data')
 var Promise = require('bluebird')
-const axiosFileupload = require('axios-fileupload')
 
 class Model {
+  _fileUpload (url, file, name = 'file') {
+    if (typeof url !== 'string') {
+      throw new TypeError(`Expected a string, got ${typeof url}`)
+    }
+    const formData = new FormData()
+    formData.append(name, file)
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data'
+      },
+      withCredentials: true
+    }
+    return axios.post(url, formData, config)
+  }
+
   constructor (postURL, getURL, deleteURL) {
     this._postURL = postURL
     this._getURL = getURL
@@ -11,7 +26,7 @@ class Model {
 
   getImages (nextCursor = '') {
     return new Promise((resolve, reject) => {
-      axios.get(this._getURL + '?nextCursor=' + nextCursor)
+      axios.get(this._getURL + '?nextCursor=' + nextCursor, {withCredentials: true})
       .then(function (response) {
         resolve(response.data)
       })
@@ -23,7 +38,7 @@ class Model {
 
   deleteImage (publicId) {
     return new Promise((resolve, reject) => {
-      axios.post(this._deleteURL + '?publicId=' + publicId)
+      axios.post(this._deleteURL + '?publicId=' + publicId, {withCredentials: true})
       .then(response => {
         resolve(response)
       })
@@ -35,19 +50,8 @@ class Model {
 
   uploadImage (image) {
     return new Promise((resolve, reject) => {
-      axiosFileupload(this._postURL, image).then(resp => {
-        if (resp.data.status) {
-          resolve({status: true,
-            data: {
-              url: resp.data.data.url,
-              public_id: resp.data.data.public_id,
-              original_name: resp.data.data.originalName,
-              created_at: resp.data.data.created_at
-            }}
-          )
-        } else {
-          resolve({status: false, errMessage: resp.data.errMessage})
-        }
+      this._fileUpload(this._postURL, image).then(resp => {
+        resolve(resp.data)
       }).catch(err => {
         reject(err)
       })
