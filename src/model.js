@@ -26,7 +26,7 @@ class Model {
 
   getImages (nextCursor = '') {
     return new Promise((resolve, reject) => {
-      axios.get(this._getURL + '?nextCursor=' + nextCursor, {withCredentials: true})
+      axios.get(this._getURL + '?nextCursor=' + nextCursor)
       .then(function (response) {
         resolve(response.data)
       })
@@ -38,7 +38,7 @@ class Model {
 
   deleteImage (publicId) {
     return new Promise((resolve, reject) => {
-      axios.post(this._deleteURL + '?publicId=' + publicId, {withCredentials: true})
+      axios.post(this._deleteURL + '?publicId=' + publicId)
       .then(response => {
         resolve(response)
       })
