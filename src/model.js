@@ -26,11 +26,9 @@ class Model {
 
   getImages (nextCursor = '') {
     return new Promise((resolve, reject) => {
-      axios.get(this._getURL + '?nextCursor=' + nextCursor)
-      .then(function (response) {
+      axios.get(this._getURL + '?nextCursor=' + nextCursor).then(function (response) {
         resolve(response.data)
-      })
-      .catch(function (err) {
+      }).catch(function (err) {
         reject(err)
       })
     })
@@ -38,11 +36,9 @@ class Model {
 
   deleteImage (publicId) {
     return new Promise((resolve, reject) => {
-      axios.post(this._deleteURL + '?publicId=' + publicId)
-      .then(response => {
+      axios.post(this._deleteURL + '?publicId=' + publicId).then(response => {
         resolve(response)
-      })
-      .catch(function (err) {
+      }).catch(function (err) {
         reject(err)
       })
     })

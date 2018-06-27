@@ -124,7 +124,7 @@ class View {
     })
   }
 
-  loadMoreButtonVisible (dataCursor) {
+  setLoadMoreButtonVisible (dataCursor) {
     if (dataCursor === false) {
       this._buttonNextCursor.parent().empty()
     } else {

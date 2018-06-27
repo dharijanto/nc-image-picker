@@ -1,6 +1,6 @@
 var Promise = require('bluebird')
 
-class PresenterController {
+class Presenter {
   constructor (view, model) {
     this._model = model
     this._view = view
@@ -20,9 +20,9 @@ class PresenterController {
           this._view.appendImage(data)
         })
         if (resp.data.next_cursor) {
-          this._view.loadMoreButtonVisible(resp.data.next_cursor)
+          this._view.setLoadMoreButtonVisible(resp.data.next_cursor)
         } else {
-          this._view.loadMoreButtonVisible(false)
+          this._view.setLoadMoreButtonVisible(false)
         }
       } else {
         alert('Error loading image: ' + resp.errMessage)
@@ -63,4 +63,4 @@ class PresenterController {
   }
 }
 
-module.exports = PresenterController
+module.exports = Presenter
