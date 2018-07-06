@@ -34,9 +34,9 @@ class Model {
     })
   }
 
-  deleteImage (publicId) {
+  deleteImage (filename) {
     return new Promise((resolve, reject) => {
-      axios.post(this._deleteURL + '?publicId=' + publicId).then(response => {
+      axios.post(this._deleteURL, {filename}).then(response => {
         resolve(response)
       }).catch(function (err) {
         reject(err)

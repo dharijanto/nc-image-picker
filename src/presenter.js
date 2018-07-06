@@ -16,7 +16,7 @@ class Presenter {
     return this._model.getImages(nextCursor).then(resp => {
       if (resp.status) {
         this._nextCursor = resp.data.next_cursor
-        resp.data.resources.forEach((data) => {
+        resp.data.forEach((data) => {
           this._view.appendImage(data)
         })
         if (resp.data.next_cursor) {
@@ -34,9 +34,9 @@ class Presenter {
     })
   }
 
-  _deleteButtonClicked (publicId) {
+  _deleteButtonClicked (filename) {
     return new Promise((resolve, reject) => {
-      this._model.deleteImage(publicId).then(resp => {
+      this._model.deleteImage(filename).then(resp => {
         resolve(resp)
       }).catch(function (err) {
         reject(err)
