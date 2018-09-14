@@ -97,7 +97,7 @@ class View {
     var textImage = $('<div class="text-center textImage" style=""></div>')
     var overlayImage = $('<div class="overlay" > </div>')
     var imageSrc = $('<img src="' + imageURL + '" class="img-responsive" style="height: 200px; max-height: 100%">')
-    var btnDeleteImage = $(`<div class="btn btn-danger btn-close" style="float:right" data-toggle="modal" data-target="#___deletepicture" data-public-id="'${imagePublicId}'"> <span>X</span> </div>`)
+    var btnDeleteImage = $(`<div class="btn btn-danger btn-close" style="float:right" data-toggle="modal" data-target="#___deletepicture" data-public-id="${imagePublicId}"> <span>X</span> </div>`)
     var imageHref = $(`<a href="javascript:void(0);" class="data-image-url" data-url="${imageURL}" data-public-id="${imagePublicId}">Select Image</a>`)
 
     textImage.append(imageHref)
