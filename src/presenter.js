@@ -48,10 +48,10 @@ class Presenter {
     this._getImages(this._nextCursor)
   }
 
-  _uploadClicked (image) {
+  _uploadClicked (imageBinaryData) {
     return new Promise((resolve, reject) => {
-      if (image) {
-        this._model.uploadImage(image).then(resp => {
+      if (imageBinaryData) {
+        this._model.uploadImage(imageBinaryData).then(resp => {
           resolve(resp)
         }).catch(err => {
           reject(err)

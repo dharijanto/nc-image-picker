@@ -17,16 +17,24 @@ declare namespace NCImagePicker {
   type ImageURL = string
   interface ImageObject {
     url: ImageURL
-    public_id: string
+    filename: string
   }
   type ImageSelectedCallback = (uploadedImageURL: ImageURL, uploadedImageId: string) => void
-  type ImageDeleteClicked = (publicId: string) => Promise<NCResponse<null>>
-  type ImageUploadClicked = (imageData: any) => Promise<NCResponse<ImageURL>>
-  type ImageLoadMore = () => void
+  type ImageDeleteClicked = (filename: string) => Promise<NCResponse<null>>
+  type ImageUploadClicked = (imageBinaryData: string) => Promise<NCResponse<ImageURL>>
+  type ImageLoadMore = () => Promise<NCResponse<ImageObject[]>>
 
   interface ViewConstructor {
     new (rootElement: JQuery.Node): View
   }
+
+  interface NCResponse<T> {
+    status: boolean,
+    data?: T,
+    errMessage?: string
+    errCode?: number
+  }
+  
 
   interface View {
     initializeElement (onDeleteClicked: ImageDeleteClicked,
@@ -35,6 +43,12 @@ declare namespace NCImagePicker {
       onImageSelected: ImageSelectedCallback)
     appendImage (data: ImageObject, appendOrPrepend: boolean)
     setLoadMoreButtonVisible(visible: boolean)
+  }
+
+  interface Model {
+    getImages (): Promise<NCResponse<ImageObject[]>>
+    deleteImage (filename: string): Promise<NCResponse<null>>
+    uploadImage (imageBinaryData: string): Promise<NCResponse<ImageObject>>
   }
 
   interface Config {

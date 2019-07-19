@@ -1,10 +1,8 @@
 <html>
   <head>
   	<title>Gallery Image Section</title>
+    <!-- The library depends on bootstrap for its UI -->
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-  	<!-- <link rel="stylesheet" href="/assets/jquery-file-upload-v9.19.1/css/style.css"> -->
-  	<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
-  	<!-- <link rel="stylesheet" href="/assets/jquery-file-upload-v9.19.1/css/jquery.fileupload.css"> -->
   	<style>
   		.overlay {
   			position: absolute;
@@ -47,12 +45,10 @@
     </div>
     -->
   </body>
+    <!-- The library depends on bootstrap and JQuery to run -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <!-- <script type="text/javascript" src="/assets/jquery-file-upload-v9.19.1/js/vendor/jquery.ui.widget.js"></script>
-  <script type="text/javascript" src="/assets/jquery-file-upload-v9.19.1/js/jquery.iframe-transport.js"></script>
-  <script type="text/javascript" src="/assets/jquery-file-upload-v9.19.1/js/jquery.fileupload.js"></script>
-  <script type="text/javascript" src="./bundle.js"></script> -->
+  <script type="text/javascript" src="../build/image-picker-bundle.js"></script>
   <script>
   function imageSelected (param) {
     alert('call back ' + param)
@@ -63,13 +59,8 @@
     postURL: 'http://cms.nusantara-local.com:8080/07d4d76b54b75f5b12c6458cbbd1f1aa/imageupload',
     getURL: 'http://cms.nusantara-local.com:8080/07d4d76b54b75f5b12c6458cbbd1f1aa/imageupload',
     deleteURL: 'http://cms.nusantara-local.com:8080/07d4d76b54b75f5b12c6458cbbd1f1aa/imagedelete',
+    useMockModel: true
   })
-
-  // $(".modal").on("shown.bs.modal", function () {
-  //     if ($(".modal-backdrop").length > 1) {
-  //       $(".modal-backdrop").not(':first').remove();
-  //     }
-  // })
 
   </script>
 </html>
