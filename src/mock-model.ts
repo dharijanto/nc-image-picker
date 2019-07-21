@@ -34,7 +34,7 @@ export default class MockModel implements Model {
     }
   }
 
-  // No matter what image is uploaded, the same is 
+  // No matter what image is uploaded, the same one is returned
   uploadImage (): Promise<NCResponse<ImageObject>> {
     const filename = '' + this.images.length
     const url = 'http://res.cloudinary.com/nusantara-cloud/image/upload/v1507798303/daniaja/amd-ryzen-pricing-100713729-orig.jpg'

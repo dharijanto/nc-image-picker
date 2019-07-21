@@ -48,7 +48,7 @@
     <!-- The library depends on bootstrap and JQuery to run -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
   <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="../build/image-picker-bundle.js"></script>
+  <script type="text/javascript" src="../dist/nc-image-picker.js"></script>
   <script>
   function imageSelected (param) {
     alert('call back ' + param)
@@ -56,10 +56,11 @@
 
   $('#imagePicker').NCImagePicker({
     callbackFn: imageSelected,
-    postURL: 'http://cms.nusantara-local.com:8080/07d4d76b54b75f5b12c6458cbbd1f1aa/imageupload',
-    getURL: 'http://cms.nusantara-local.com:8080/07d4d76b54b75f5b12c6458cbbd1f1aa/imageupload',
-    deleteURL: 'http://cms.nusantara-local.com:8080/07d4d76b54b75f5b12c6458cbbd1f1aa/imagedelete',
-    useMockModel: true
+    // postURL: 'http://ntech.nusantara-local.com/30285cc65ade6b89fe590ab684eeb0dc/image',
+    // getURL: 'http://ntech.nusantara-local.com/30285cc65ade6b89fe590ab684eeb0dc/images',
+    // deleteURL: 'http://ntech.nusantara-local.com/30285cc65ade6b89fe590ab684eeb0dc/images/delete',
+    useMockModel: true,
+    numImagesPerLoad: 2
   })
 
   </script>

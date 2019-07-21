@@ -16,12 +16,8 @@ export default class NetworkModel implements Model {
   }
 
   getImages (): Promise<NCResponse<ImageObject[]>> {
-    return new Promise((resolve, reject) => {
-      axios.get(this.getURL).then(function (response) {
-        resolve(response.data)
-      }).catch(function (err) {
-        reject(err)
-      })
+    return axios.get(this.getURL).then(function (response) {
+      return response.data
     })
   }
 
@@ -40,7 +36,7 @@ export default class NetworkModel implements Model {
     if (typeof url !== 'string') {
       throw new TypeError(`Expected a string, got ${typeof url}`)
     }
-    const formData = new FData({})
+    const formData = new FData()
     formData.append(name, binaryData)
     const config = {
       headers: {

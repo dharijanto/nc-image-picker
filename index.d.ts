@@ -17,6 +17,7 @@ declare namespace NCImagePicker {
   type ImageURL = string
   interface ImageObject {
     url: ImageURL
+    thumbnailURL?: ImageURL
     filename: string
   }
   type ImageSelectedCallback = (uploadedImageURL: ImageURL, uploadedImageId: string) => void
@@ -34,15 +35,14 @@ declare namespace NCImagePicker {
     errMessage?: string
     errCode?: number
   }
-  
 
   interface View {
-    initializeElement (onDeleteClicked: ImageDeleteClicked,
+    initializeElement (
+      onDeleteClicked: ImageDeleteClicked,
       onLoadMoreClicked: ImageLoadMore,
       onUploadClicked: ImageUploadClicked,
       onImageSelected: ImageSelectedCallback)
-    appendImage (data: ImageObject, appendOrPrepend: boolean)
-    setLoadMoreButtonVisible(visible: boolean)
+    appendImage (data: ImageObject, addToEnd?: boolean)
   }
 
   interface Model {
@@ -58,6 +58,7 @@ declare namespace NCImagePicker {
     deleteURL: string
     useMockModel?: boolean
     customView?: ViewConstructor
+    numImagesPerLoad?: number
   }
 }
 

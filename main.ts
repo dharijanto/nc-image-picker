@@ -1,17 +1,19 @@
-var jquery = require('jquery')
-var Presenter = require('./src/presenter.js')
+import * as jquery from 'jquery'
+import Presenter from './src/presenter'
 import NetworkModel from './src/network-model'
 import MockModel from './src/mock-model'
-var DefaultView = require('./src/view.js')
+import BootstrapBasedView from './src/bootstrap-view'
 
-jquery.fn.NCImagePicker = function ({callbackFn, postURL, getURL, deleteURL, useMockModel = false, customView}) {
+import Config = NCImagePicker.Config
+
+jquery.fn.NCImagePicker = function (config: Config) {
   const rootElement = this
-  var Model = useMockModel ? MockModel : NetworkModel
-  const View = customView || DefaultView
+  var Model = config.useMockModel ? MockModel : NetworkModel
+  const View = config.customView || BootstrapBasedView
 
-  var model = new Model(postURL, getURL, deleteURL)
+  var model = new Model(config.postURL, config.getURL, config.deleteURL)
   var view = new View(rootElement)
-  var presenter = new Presenter(view, model)
+  var presenter = new Presenter(view, model, config.numImagesPerLoad)
 
-  presenter.initializeElement(callbackFn)
+  presenter.initializeElement(config.callbackFn)
 }
