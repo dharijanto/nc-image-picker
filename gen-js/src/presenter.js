@@ -67,6 +67,8 @@ class Presenter {
         return new Promise((resolve, reject) => {
             if (imageBinaryData) {
                 this.model.uploadImage(imageBinaryData).then(resp => {
+                    const image = resp.data;
+                    this.view.appendImage(image, false);
                     resolve(resp);
                 }).catch(err => {
                     reject(err);
