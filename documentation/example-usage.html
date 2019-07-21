@@ -2,8 +2,10 @@
   <head>
   	<title>Gallery Image Section</title>
     <!-- The library depends on bootstrap for its UI -->
-  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-  	<style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    
+    <!-- Optional style to make overlay only shown on hovered -->
+    <style>
   		.overlay {
   			position: absolute;
   			top: 0;bottom: 0;left: 0;right: 0;
@@ -25,25 +27,6 @@
   	<div class="container">
           <button class="btn btn-primary" id="imagePicker">Upload Button</button>
   	</div>
-    <!--
-    <div id="modalUpload" class="modal fade" role="dialog" style="overflow-y:auto;">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Modal Upload Image</h4>
-          </div>
-          <div class="modal-body">
-            <div id="imagePicker"></div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    -->
   </body>
     <!-- The library depends on bootstrap and JQuery to run -->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
@@ -56,9 +39,9 @@
 
   $('#imagePicker').NCImagePicker({
     callbackFn: imageSelected,
-    // postURL: 'http://ntech.nusantara-local.com/30285cc65ade6b89fe590ab684eeb0dc/image',
-    // getURL: 'http://ntech.nusantara-local.com/30285cc65ade6b89fe590ab684eeb0dc/images',
-    // deleteURL: 'http://ntech.nusantara-local.com/30285cc65ade6b89fe590ab684eeb0dc/images/delete',
+    // postURL: 'http://www.example.com/image',
+    // getURL: 'http://www.example.com/images',
+    // deleteURL: 'http://www.example.com/images/delete',
     useMockModel: true,
     numImagesPerLoad: 2
   })

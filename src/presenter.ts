@@ -57,6 +57,7 @@ export default class Presenter {
         })
         this.imagesLoaded += this.numImagesPerLoad
       } else {
+        alert('No more image to be loaded')
         // No more images to load
       }
     }).catch(err => {
