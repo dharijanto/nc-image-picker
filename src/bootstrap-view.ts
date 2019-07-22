@@ -215,7 +215,6 @@ export default class BootstrapBasedView implements View {
           $(this.modalUploadSuccess).find('.result_image_text').val(linkpicture.url)
           $(this.modalUploadSuccess).find('.result_image').attr('src', linkpicture.url)
           $(this.modalUploadSuccess).find('.info_result').removeClass('hidden')
-          this.appendImage(linkpicture, true)
           this.modalUpload.modal('hide')
           this.modalUploadSuccess.modal('show')
         } else {

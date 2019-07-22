@@ -91,6 +91,8 @@ export default class Presenter {
           this.view.appendImage(image, false)
           resolve(resp)
         }).catch(err => {
+          console.error(err)
+          alert('Failed to upload image: ' + err.message)
           reject(err)
         })
       } else {
