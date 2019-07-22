@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const Promise = require("bluebird");
 class Presenter {
     constructor(view, model, numImagesPerLoad) {
         this.model = model;
