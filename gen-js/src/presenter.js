@@ -40,10 +40,10 @@ class Presenter {
                     this.view.appendImage(image, true);
                 });
                 this.imagesLoaded += this.numImagesPerLoad;
+                return imagesToLoad.length;
             }
             else {
-                alert('No more image to be loaded');
-                // No more images to load
+                return 0;
             }
         }).catch(err => {
             console.error(err);
@@ -60,7 +60,11 @@ class Presenter {
         });
     }
     onLoadMoreButtonClicked() {
-        this.loadImages();
+        this.loadImages().then(numLoaded => {
+            if (numLoaded === 0) {
+                alert('No more images to load!');
+            }
+        });
     }
     onUploadButtonClicked(imageBinaryData) {
         return new Promise((resolve, reject) => {

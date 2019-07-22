@@ -55,9 +55,9 @@ export default class Presenter {
           this.view.appendImage(image, true)
         })
         this.imagesLoaded += this.numImagesPerLoad
+        return imagesToLoad.length
       } else {
-        alert('No more image to be loaded')
-        // No more images to load
+        return 0
       }
     }).catch(err => {
       console.error(err)
@@ -76,7 +76,11 @@ export default class Presenter {
   }
 
   private onLoadMoreButtonClicked () {
-    this.loadImages()
+    this.loadImages().then(numLoaded => {
+      if (numLoaded === 0) {
+        alert('No more images to load!')
+      }
+    })
   }
 
   private onUploadButtonClicked (imageBinaryData) {
