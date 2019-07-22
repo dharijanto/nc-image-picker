@@ -1,4 +1,3 @@
-import * as Promise from 'bluebird'
 import Model = NCImagePicker.Model
 import View = NCImagePicker.View
 import ImageObject = NCImagePicker.ImageObject

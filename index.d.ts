@@ -4,7 +4,6 @@
 // TypeScript Version: 2.9
 
 /// <reference types="jquery" />
-/// <reference types="bluebird" />
 
 declare namespace NCImagePicker {
   interface NCResponse<T> {
