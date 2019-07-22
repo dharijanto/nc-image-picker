@@ -3,6 +3,16 @@ import NCResponse = NCImagePicker.NCResponse
 import ImageObject = NCImagePicker.ImageObject
 import { isNumber } from "util";
 
+/*
+This model is just for a demo purposes. The real one would be network-model.ts
+Since in order to create a demo with network-model.ts, we'd need to have a working backend,
+this class is created to mock the network call.
+
+ImageObject's filename is identified by the reverse-index at which the image is
+located at. So the first image on the 'images' array would have index length - 1.
+When an image is uploaded, a static URL is added to the array, hence no matter what's uploaded,
+what's added to the gallery is always the same image.
+*/
 export default class MockModel implements Model {
   // Array of static images for testing-purposes
   private images = [

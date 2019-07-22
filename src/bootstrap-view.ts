@@ -2,6 +2,12 @@ var $ = require('jquery')
 import View = NCImagePicker.View
 import ImageObject = NCImagePicker.ImageObject
 
+/*
+This is the view implemented using bootstrap 3. Can be easily swapped
+out in order to implement better-looking gallery. I'm not a designer and
+this is only used for internal purposes, so I haven't bothered implementing
+better-looking UI. Feel free to submit PR, though :)
+*/
 export default class BootstrapBasedView implements View {
   // Static HTML elements
   private uploadButton = $(`

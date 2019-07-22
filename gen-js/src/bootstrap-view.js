@@ -1,6 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var $ = require('jquery');
+/*
+This is the view implemented using bootstrap 3. Can be easily swapped
+out in order to implement better-looking gallery. I'm not a designer and
+this is only used for internal purposes, so I haven't bothered implementing
+better-looking UI. Feel free to submit PR, though :)
+*/
 class BootstrapBasedView {
     constructor(rootElement) {
         // Static HTML elements
